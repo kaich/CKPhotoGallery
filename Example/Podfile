@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'CKPhotoGallery_Example' do
+  pod 'CKPhotoGallery', :path => '../'
+
+  target 'CKPhotoGallery_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
