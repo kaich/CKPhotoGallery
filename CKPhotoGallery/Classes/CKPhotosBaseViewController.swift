@@ -29,7 +29,7 @@ public class CKPhotosBaseViewController: UICollectionViewController, UICollectio
         var orientation :UIImageOrientation
     }
     
-    var imageInformations = [CKImageInformation]()
+    var imageInformationDic = [Int : CKImageInformation]()
     let CellIdentifier = "CKPhotoCollectionViewCell"
     
     
@@ -56,9 +56,10 @@ public class CKPhotosBaseViewController: UICollectionViewController, UICollectio
         var loadedCount :Int = 0
         for url in urls {
             KingfisherManager.shared.downloader.downloadImage(with: url, options: nil, progressBlock: nil, completionHandler: { (image, error, url, data) in
-                if let image = image {
+                if let image = image, let url = url {
                     let imageInfo = CKImageInformation(url: url, size: image.size, orientation: image.imageOrientation)
-                    self.imageInformations.append(imageInfo)
+                    let index = self.imageUrls.index(of: url)
+                    self.imageInformationDic[index!] = imageInfo
                     loadedCount += 1
                 }
                 
@@ -73,7 +74,7 @@ public class CKPhotosBaseViewController: UICollectionViewController, UICollectio
     //MARK: - UICollectionViewController UICollectionViewDelegateFlowLayout Delegate Datasource
     
     override public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return imageInformations.count
+        return imageInformationDic.count
     }
     
     
@@ -90,7 +91,12 @@ public class CKPhotosBaseViewController: UICollectionViewController, UICollectio
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let height = collectionView.contentSize.height
-        let imageinfo = imageInformations[indexPath.row]
+        let tmpImageinfo = imageInformationDic[indexPath.row]
+        
+        guard let imageinfo = tmpImageinfo else {
+            return CGSize(width: 0, height: 0)
+        }
+        
         let imageSize = imageinfo.size
         let imageWidth = imageSize.width / imageSize.height * (height - 16)
         let width = imageWidth + 16
