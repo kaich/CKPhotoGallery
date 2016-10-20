@@ -23,6 +23,7 @@ class CKScalingImageView: UIScrollView {
     
     lazy var imageView: UIImageView = {
         let imageView = UIImageView(frame: self.bounds)
+        imageView.contentMode = .center
         self.addSubview(imageView)
         return imageView
     }()
