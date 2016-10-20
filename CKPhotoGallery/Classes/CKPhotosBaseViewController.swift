@@ -79,7 +79,7 @@ public class CKPhotosBaseViewController: UICollectionViewController, UICollectio
     
     
     override public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        var cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier, for: indexPath)
         if let cell = cell as? CKPhotoBaseCollectionViewCell {
             let resource = ImageResource(downloadURL: imageUrls[indexPath.row])
             cell.ivImage.kf.setImage(with: resource, placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
@@ -121,9 +121,9 @@ class CKPhotoBaseCollectionViewCell: UICollectionViewCell {
         ivImage.layer.borderWidth = 1 / UIScreen.main.scale
         ivImage.layer.cornerRadius = 3
         ivImage.layer.masksToBounds = true
-        var hConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-[imageView]-|", options: .alignAllFirstBaseline, metrics: nil, views:["imageView" : ivImage] )
-        var vConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-[imageView]-|", options: .alignAllFirstBaseline, metrics: nil, views:["imageView" : ivImage] )
-        var constraints = hConstraints + vConstraints
+        let hConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-[imageView]-|", options: .alignAllFirstBaseline, metrics: nil, views:["imageView" : ivImage] )
+        let vConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-[imageView]-|", options: .alignAllFirstBaseline, metrics: nil, views:["imageView" : ivImage] )
+        let constraints = hConstraints + vConstraints
         contentView.addConstraints(constraints)
     }
     

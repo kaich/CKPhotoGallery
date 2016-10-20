@@ -32,7 +32,7 @@ class CKPhotoGalleryZoomTransition: CKPhotoGalleryBaseTransition {
     
     
     func setupCommon(using transitionContext: UIViewControllerContextTransitioning) {
-        guard let fromViewController = transitionContext.viewController(forKey: .from), let toViewController = transitionContext.viewController(forKey: .to) else {
+        guard let toViewController = transitionContext.viewController(forKey: .to) else {
             return
         }
         
@@ -71,9 +71,6 @@ class CKPhotoGalleryZoomTransition: CKPhotoGalleryBaseTransition {
         
         let containerView = transitionContext.containerView
         
-        guard let fromViewController = transitionContext.viewController(forKey: .from), let toViewController = transitionContext.viewController(forKey: .to) else {
-            return 
-        }
         
         containerView.backgroundColor = UIColor.clear
         
