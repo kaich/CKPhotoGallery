@@ -55,7 +55,8 @@ public class CKPhotosBaseViewController: UICollectionViewController, UICollectio
         let count = urls.count
         var loadedCount :Int = 0
         for url in urls {
-            KingfisherManager.shared.downloader.downloadImage(with: url, options: nil, progressBlock: nil, completionHandler: { (image, error, url, data) in
+            let resource = ImageResource(downloadURL: url)
+            KingfisherManager.shared.retrieveImage(with: resource, options: nil, progressBlock: nil, completionHandler: { (image, error, type, url) in
                 if let image = image, let url = url {
                     let imageInfo = CKImageInformation(url: url, size: image.size, orientation: image.imageOrientation)
                     let index = self.imageUrls.index(of: url)
