@@ -12,6 +12,7 @@ import DZNEmptyDataSet
 public class CKPhotosController: CKPhotosBaseViewController, DZNEmptyDataSetDelegate, DZNEmptyDataSetSource {
     
     public var isZoomTranstion = true
+    public var contentInsets = UIEdgeInsetsMake(0, 0, 0, 0)
     
     /// 创建CKPhotosController实例
     ///
@@ -21,7 +22,6 @@ public class CKPhotosController: CKPhotosBaseViewController, DZNEmptyDataSetDele
         flowLayout.scrollDirection = .horizontal
         flowLayout.minimumInteritemSpacing = 0;
         flowLayout.minimumLineSpacing = 0;
-        flowLayout
         let vc = CKPhotosController(collectionViewLayout: flowLayout)
         target.addChildViewController(vc)
         return vc
@@ -31,6 +31,7 @@ public class CKPhotosController: CKPhotosBaseViewController, DZNEmptyDataSetDele
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        collectionView?.contentInset = contentInsets
         collectionView?.emptyDataSetDelegate = self
         collectionView?.emptyDataSetSource = self
   
