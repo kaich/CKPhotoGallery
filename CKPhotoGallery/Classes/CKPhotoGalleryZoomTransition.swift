@@ -54,7 +54,7 @@ class CKPhotoGalleryZoomTransition: CKPhotoGalleryBaseTransition {
         
         fadeView?.alpha = beginningAlpha
         
-        UIView.animate(withDuration: 0.5, animations: { () -> Void in
+        UIView.animate(withDuration: animateDuration, animations: { () -> Void in
             fadeView?.alpha = endingAlpha
         }) { finished in
             if !self.shouldPerformZoomingAnimation {
@@ -88,7 +88,7 @@ class CKPhotoGalleryZoomTransition: CKPhotoGalleryBaseTransition {
         containerView.addSubview(beginingAnimateView)
         beginingView.alpha = 0
         
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 1, options: [.allowAnimatedContent,.beginFromCurrentState], animations: {
+        UIView.animate(withDuration: animateDuration, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 1, options: [.allowAnimatedContent,.beginFromCurrentState], animations: {
             self.beginingAnimateView?.transform = finalTransform
             self.beginingAnimateView?.center = endCenter
             }, completion: { (isFinish) in

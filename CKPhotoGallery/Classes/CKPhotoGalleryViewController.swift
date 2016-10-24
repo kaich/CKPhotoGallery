@@ -12,6 +12,7 @@ class CKPhotoGalleryViewController: UIViewController, UIPageViewControllerDelega
     var urls = [URL]()
     var referenceView :UIView?
     var dismissReferenceBlock :((Int) -> UIImageView?)?
+    var duration :TimeInterval?
     var currentIndex :Int = 0 {
         didSet {
            pageControl.currentPage = currentIndex
@@ -121,6 +122,9 @@ class CKPhotoGalleryViewController: UIViewController, UIPageViewControllerDelega
         animatedTransition.beginingView = referenceView
         animatedTransition.endingView = currentViewController.scalingImageView.imageView
         animatedTransition.isDimissing = false
+        if let duration = duration {
+            animatedTransition.animateDuration = duration
+        }
         return animatedTransition
     }
     
@@ -131,6 +135,9 @@ class CKPhotoGalleryViewController: UIViewController, UIPageViewControllerDelega
         }
         animatedTransition.beginingView = currentViewController.scalingImageView.imageView
         animatedTransition.isDimissing = true
+        if let duration = duration {
+            animatedTransition.animateDuration = duration
+        }
         return animatedTransition
     }
     

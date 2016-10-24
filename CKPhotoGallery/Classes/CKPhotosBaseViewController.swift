@@ -21,6 +21,7 @@ public extension UIImage {
 
 
 public class CKPhotosBaseViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+    var duration :TimeInterval = 0.5
     public var imageUrls = [URL]()
     
     struct CKImageInformation {

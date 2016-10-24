@@ -9,6 +9,7 @@
 import UIKit
 
 class CKPhotoGalleryBaseTransition: NSObject, UIViewControllerAnimatedTransitioning {
+    var animateDuration :TimeInterval = 0.5
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         

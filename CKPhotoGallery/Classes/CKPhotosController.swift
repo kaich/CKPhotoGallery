@@ -46,18 +46,19 @@ public class CKPhotosController: CKPhotosBaseViewController, DZNEmptyDataSetDele
     
     public override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? CKPhotoBaseCollectionViewCell {
-            let vc = CKPhotoGalleryViewController()
-            vc.urls =  imageUrls
-            vc.currentIndex =  indexPath.row
+            let galleryViewController = CKPhotoGalleryViewController()
+            galleryViewController.urls =  imageUrls
+            galleryViewController.currentIndex =  indexPath.row
+            galleryViewController.duration = duration
             if isZoomTranstion {
-                vc.referenceView = cell.ivImage
-                vc.dismissReferenceBlock = { (index) in
+                galleryViewController.referenceView = cell.ivImage
+                galleryViewController.dismissReferenceBlock = { (index) in
                     let finalIndexPath = IndexPath(row: index, section: 0)
                     let finalCell = collectionView.cellForItem(at: finalIndexPath) as? CKPhotoBaseCollectionViewCell
                     return finalCell?.ivImage
                 }
             }
-            present(vc, animated: true, completion: nil)
+            present(galleryViewController, animated: true, completion: nil)
         }
     }
     
