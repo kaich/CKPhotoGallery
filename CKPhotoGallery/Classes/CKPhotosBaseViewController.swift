@@ -92,7 +92,7 @@ public class CKPhotosBaseViewController: UICollectionViewController, UICollectio
     //MARK: -  UICollectionViewDelegateFlowLayout
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let height = collectionView.contentSize.height
+        let height = collectionView.bounds.height
         let tmpImageinfo = imageInformationDic[indexPath.row]
         
         guard let imageinfo = tmpImageinfo else {
