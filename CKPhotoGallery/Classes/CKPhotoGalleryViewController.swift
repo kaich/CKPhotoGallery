@@ -52,8 +52,8 @@ class CKPhotoGalleryViewController: UIViewController, UIPageViewControllerDelega
         view.addSubview(pageController.view)
         addChildViewController(pageController)
         
-        pageControl.currentPage = 0
         pageControl.numberOfPages = self.urls.count
+        pageControl.currentPage = currentIndex
         pageControl.pageIndicatorTintColor = UIColor(colorLiteralRed: 0, green: 0, blue: 0, alpha: 0.6)
         self.view.addSubview(pageControl)
         
