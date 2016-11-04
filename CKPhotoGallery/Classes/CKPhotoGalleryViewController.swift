@@ -32,7 +32,6 @@ class CKPhotoGalleryViewController: UIViewController, UIPageViewControllerDelega
     }()
     fileprivate lazy var pageControl :UIPageControl = UIPageControl(frame: CGRect(x: (UIScreen.main.bounds.width - 220)/2, y: UIScreen.main.bounds.height - 60, width: 220, height: 40))
     
-    
     init() {
         super.init(nibName: nil, bundle: nil)
         modalPresentationStyle = .custom
@@ -87,7 +86,6 @@ class CKPhotoGalleryViewController: UIViewController, UIPageViewControllerDelega
         if currentIndex - 1 < 0 {
             return nil
         }
-        
         return createPhotoViewControllerForPhoto(urls[currentIndex - 1])
     }
     
@@ -109,7 +107,7 @@ class CKPhotoGalleryViewController: UIViewController, UIPageViewControllerDelega
                 let previousView = dismissReferenceBlock(previousIndex!)
                 previousView?.alpha = 1
             }
-            //currentIndex property can't use in this function
+            //currentIndex property can't use in this function. UIPageViewController is a black box.
             let index = urls.index(of: currentViewController.url!)
             let dismissReferenceView = dismissReferenceBlock(index!)
             dismissReferenceView?.alpha = 0
@@ -131,7 +129,10 @@ class CKPhotoGalleryViewController: UIViewController, UIPageViewControllerDelega
     open func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         let animatedTransition = CKPhotoGalleryZoomTransition()
         if let dismissReferenceBlock = dismissReferenceBlock {
-            animatedTransition.endingView = dismissReferenceBlock(currentIndex)
+            //because currentIndex isn't very accurate
+            if let index =  urls.index(of: currentViewController.url!) {
+                animatedTransition.endingView = dismissReferenceBlock(index)
+            }
         }
         animatedTransition.beginingView = currentViewController.scalingImageView.imageView
         animatedTransition.isDimissing = true
