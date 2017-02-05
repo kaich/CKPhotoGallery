@@ -20,9 +20,9 @@ class CKPhotoGalleryViewController: UIViewController, UIPageViewControllerDelega
     }
     
     fileprivate var currentViewController :CKPhotoViewController {
-        return self.pageController.viewControllers?.first as! CKPhotoViewController
+        return self.pageViewController.viewControllers?.first as! CKPhotoViewController
     }
-    fileprivate lazy var pageController :UIPageViewController = {
+    fileprivate lazy var pageViewController :UIPageViewController = {
         let tmpPageController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: [UIPageViewControllerOptionInterPageSpacingKey: 16.0])
         tmpPageController.view.backgroundColor = UIColor(colorLiteralRed: 0, green: 0, blue: 0, alpha: 0.8)
         tmpPageController.delegate = self
@@ -48,15 +48,15 @@ class CKPhotoGalleryViewController: UIViewController, UIPageViewControllerDelega
         // Do any additional setup after loading the view.
         view.backgroundColor = UIColor.clear
 
-        view.addSubview(pageController.view)
-        addChildViewController(pageController)
+        addChildViewController(pageViewController)
+        view.addSubview(pageViewController.view)
         
         pageControl.numberOfPages = self.urls.count
         pageControl.currentPage = currentIndex
         pageControl.pageIndicatorTintColor = UIColor(colorLiteralRed: 0, green: 0, blue: 0, alpha: 0.6)
         self.view.addSubview(pageControl)
         
-        // Add tap gesutre to dimimss 
+        // Add tap gesutre to dimimss
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapView(gesture:)))
         view.addGestureRecognizer(tapGesture)
     }
@@ -70,6 +70,13 @@ class CKPhotoGalleryViewController: UIViewController, UIPageViewControllerDelega
         let photoViewController = CKPhotoViewController(url: url)
 
         return photoViewController
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        view.frame = UIScreen.main.bounds
+        pageViewController.view.frame = view.frame
     }
     
     //MARK: - Gesture

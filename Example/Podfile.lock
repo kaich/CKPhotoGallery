@@ -1,5 +1,5 @@
 PODS:
-  - CKPhotoGallery (0.1.0):
+  - CKPhotoGallery (0.1.6):
     - DZNEmptyDataSet
     - Kingfisher
   - DZNEmptyDataSet (1.8.1)
@@ -13,10 +13,10 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  CKPhotoGallery: 37016745bc0f5c3c033d30f7f5adee0ece9f5386
+  CKPhotoGallery: 2e69919a03629b8adce360590d45a7721cdca9a9
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   Kingfisher: 007f5851c18c81e7cc106c9cbac1bafea1cce5dc
 
 PODFILE CHECKSUM: 2d99c10c6b5e84607808a765b4e2b007667dd288
 
-COCOAPODS: 1.1.0.rc.2
+COCOAPODS: 1.2.0.beta.1

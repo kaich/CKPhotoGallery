@@ -59,6 +59,7 @@ public class CKPhotosController: CKPhotosBaseViewController, DZNEmptyDataSetDele
                     return finalCell?.ivImage
                 }
             }
+            
             present(galleryViewController, animated: true, completion: nil)
         }
     }

@@ -45,6 +45,10 @@ class CKPhotoViewController: UIViewController, UIScrollViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        scalingImageView.frame = view.bounds
+    }
     
     // MARK:- UIScrollViewDelegate
     
