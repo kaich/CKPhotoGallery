@@ -54,11 +54,14 @@ class CKPhotoGalleryViewController: UIViewController, UIPageViewControllerDelega
         pageControl.numberOfPages = self.urls.count
         pageControl.currentPage = currentIndex
         pageControl.pageIndicatorTintColor = UIColor(colorLiteralRed: 0, green: 0, blue: 0, alpha: 0.6)
+        pageControl.isUserInteractionEnabled = false
         self.view.addSubview(pageControl)
         
         // Add tap gesutre to dimimss
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapView(gesture:)))
         view.addGestureRecognizer(tapGesture)
+        
+        automaticallyAdjustsScrollViewInsets = true
     }
 
     override func didReceiveMemoryWarning() {

@@ -40,6 +40,11 @@ class CKPhotoGalleryZoomTransition: CKPhotoGalleryBaseTransition {
         
         if !isDimissing {
             containerView.addSubview(toViewController.view)
+            
+            let hConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-[toViewController]-|", options: .alignAllFirstBaseline, metrics: nil, views:["toViewController" : toViewController.view] )
+            let vConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-[toViewController]-|", options: .alignAllFirstBaseline, metrics: nil, views:["toViewController" : toViewController.view] )
+            let constraints = hConstraints + vConstraints
+            containerView.addConstraints(constraints)
         }
         else {
             containerView.bringSubview(toFront: toViewController.view)

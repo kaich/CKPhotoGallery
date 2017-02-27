@@ -1,0 +1,6 @@
+framework module CKPhotoGallery {
+  umbrella header "CKPhotoGallery-umbrella.h"
+
+  export *
+  module * { export * }
+}
