@@ -61,7 +61,6 @@ class CKPhotoGalleryViewController: UIViewController, UIPageViewControllerDelega
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapView(gesture:)))
         view.addGestureRecognizer(tapGesture)
         
-        automaticallyAdjustsScrollViewInsets = true
     }
 
     override func didReceiveMemoryWarning() {
