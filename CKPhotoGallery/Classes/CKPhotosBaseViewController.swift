@@ -33,6 +33,7 @@ public class CKPhotosBaseViewController: UICollectionViewController, UICollectio
     var imageInformationDic = [Int : CKImageInformation]()
     let CellIdentifier = "CKPhotoCollectionViewCell"
     
+    var retryTimes = 0
     
     
     override public func viewDidLoad() {
@@ -67,6 +68,12 @@ public class CKPhotosBaseViewController: UICollectionViewController, UICollectio
                 
                 if loadedCount == count {
                     self.collectionView?.reloadData()
+                }
+                else {
+                    self.retryTimes += 1
+                    if self.retryTimes <= 3 {
+                        self.preloadImages(urls: urls)
+                    }
                 }
             })
         }
