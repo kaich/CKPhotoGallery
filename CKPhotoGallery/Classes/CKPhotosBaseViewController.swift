@@ -86,7 +86,7 @@ public class CKPhotosBaseViewController: UICollectionViewController, UICollectio
                         self.finalSize = CGSize(width: width, height: height)
                     }
                     else {
-                        let width = UIScreen.main.bounds.width - 20
+                        let width = UIScreen.main.bounds.width - 30
                         let scale = sampleSize.height / sampleSize.width
                         let height = width * scale
                         self.finalSize = CGSize(width: width, height: height)
