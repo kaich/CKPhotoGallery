@@ -23,6 +23,8 @@ public extension UIImage {
 public class CKPhotosBaseViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     var duration :TimeInterval = 0.5
     public var imageUrls = [URL]()
+    //图片加载完成(isVertical ，finalSize)
+    public var imageLoadCompleteBlock :((Bool, CGSize) -> Void)?
     
     struct CKImageInformation {
         var url :URL?
@@ -35,6 +37,8 @@ public class CKPhotosBaseViewController: UICollectionViewController, UICollectio
     
     var retryTimes = 0
     
+    var isVertical = false
+    var finalSize = CGSize.zero
     
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -67,6 +71,29 @@ public class CKPhotosBaseViewController: UICollectionViewController, UICollectio
                 }
                 
                 if loadedCount == count {
+                    var sampleSize = CGSize.zero
+                    for  (_, inform) in self.imageInformationDic {
+                        if inform.size.height > inform.size.width {
+                            self.isVertical = true
+                        }
+                        sampleSize = inform.size
+                    }
+                    if self.isVertical {
+                        let height = self.collectionView!.bounds.height - 16
+                        let scale = sampleSize.width / sampleSize.height
+                        let width =  height * scale
+                        self.finalSize = CGSize(width: width, height: height)
+                    }
+                    else {
+                        let width = UIScreen.main.bounds.width
+                        let scale = sampleSize.height / sampleSize.width
+                        let height = width * scale
+                        self.finalSize = CGSize(width: width, height: height)
+                    }
+                    
+                    if let imageLoadCompleteBlock = self.imageLoadCompleteBlock {
+                        imageLoadCompleteBlock(self.isVertical,self.finalSize)
+                    }
                     self.collectionView?.reloadData()
                 }
                 else {
@@ -91,7 +118,17 @@ public class CKPhotosBaseViewController: UICollectionViewController, UICollectio
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier, for: indexPath)
         if let cell = cell as? CKPhotoBaseCollectionViewCell {
             let resource = ImageResource(downloadURL: imageUrls[indexPath.row])
-            cell.ivImage.kf.setImage(with: resource, placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
+            cell.ivImage.kf.setImage(with: resource, placeholder: nil, options: nil, progressBlock: nil, completionHandler: { (image, error, type, url) in
+                if let image = image {
+                    if self.isVertical {
+                        if image.size.width > image.size.height {
+                            let rotatedImage = UIImage(cgImage: image.cgImage!, scale: CGFloat(1.0), orientation: .right)
+                            cell.ivImage.image = rotatedImage
+                        }
+                    }
+                }
+            })
+            
         }
         return cell
     }
@@ -99,18 +136,7 @@ public class CKPhotosBaseViewController: UICollectionViewController, UICollectio
     //MARK: -  UICollectionViewDelegateFlowLayout
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let height = collectionView.bounds.height
-        let tmpImageinfo = imageInformationDic[indexPath.row]
-        
-        guard let imageinfo = tmpImageinfo else {
-            return CGSize(width: 0, height: 0)
-        }
-        
-        let imageSize = imageinfo.size
-        let imageWidth = imageSize.width / imageSize.height * (height - 16)
-        let width = imageWidth + 16
-        
-        return CGSize(width: width , height: height)
+        return self.finalSize
     }
     
     
