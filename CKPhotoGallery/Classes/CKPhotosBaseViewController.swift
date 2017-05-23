@@ -80,7 +80,7 @@ public class CKPhotosBaseViewController: UICollectionViewController, UICollectio
                     }
                     if self.isVertical {
                         let height = self.collectionView!.bounds.height - 16
-                        let scale = sampleSize.width / sampleSize.height
+                        let scale = sampleSize.width / sampleSize.height < 1 ? sampleSize.width / sampleSize.height : sampleSize.height / sampleSize.width
                         let width =  height * scale
                         self.finalSize = CGSize(width: width, height: height)
                     }
