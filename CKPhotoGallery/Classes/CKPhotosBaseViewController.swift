@@ -25,6 +25,7 @@ public class CKPhotosBaseViewController: UICollectionViewController, UICollectio
     public var imageUrls = [URL]()
     //图片加载完成(isVertical ，finalSize)
     public var imageLoadCompleteBlock :((Bool, CGSize) -> Void)?
+    public var estimatedHeight :CGFloat = 0
     
     struct CKImageInformation {
         var url :URL?
@@ -79,7 +80,7 @@ public class CKPhotosBaseViewController: UICollectionViewController, UICollectio
                         sampleSize = inform.size
                     }
                     if self.isVertical {
-                        let height = self.collectionView!.bounds.height - 16
+                        let height = self.estimatedHeight - 16
                         let scale = sampleSize.width / sampleSize.height < 1 ? sampleSize.width / sampleSize.height : sampleSize.height / sampleSize.width
                         let width =  height * scale
                         self.finalSize = CGSize(width: width, height: height)
