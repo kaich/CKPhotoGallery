@@ -8,6 +8,8 @@
 
 import UIKit
 import DZNEmptyDataSet
+import AVFoundation
+import AVKit
 
 public class CKPhotosController: CKPhotosBaseViewController, DZNEmptyDataSetDelegate, DZNEmptyDataSetSource {
     
@@ -47,20 +49,36 @@ public class CKPhotosController: CKPhotosBaseViewController, DZNEmptyDataSetDele
     
     public override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? CKPhotoBaseCollectionViewCell {
-            let galleryViewController = CKPhotoGalleryViewController()
-            galleryViewController.urls =  imageUrls
-            galleryViewController.currentIndex =  indexPath.row
-            galleryViewController.duration = duration
-            if isZoomTranstion {
-                galleryViewController.referenceView = cell.ivImage
-                galleryViewController.dismissReferenceBlock = { (index) in
-                    let finalIndexPath = IndexPath(row: index, section: 0)
-                    let finalCell = collectionView.cellForItem(at: finalIndexPath) as? CKPhotoBaseCollectionViewCell
-                    return finalCell?.ivImage
+            let url = imageUrls[indexPath.row]
+            if self.typeByURLBlock(url) == .video {
+                if let videoURL = self.videoURLByURLBlock(url) {
+                    let player = AVPlayer(url: videoURL as URL)
+                    let playerViewController = AVPlayerViewController()
+                    playerViewController.player = player
+                    self.present(playerViewController, animated: true) {
+                        playerViewController.player!.play()
+                    }
                 }
             }
-            
-            present(galleryViewController, animated: true, completion: nil)
+            else {
+                
+                let galleryViewController = CKPhotoGalleryViewController()
+                galleryViewController.urls =  imageUrls.filter({ (url) -> Bool in
+                    return self.typeByURLBlock(url) == .image
+                })
+                galleryViewController.currentIndex =  indexPath.row
+                galleryViewController.duration = duration
+                if isZoomTranstion {
+                    galleryViewController.referenceView = cell.ivImage
+                    galleryViewController.dismissReferenceBlock = { (index) in
+                        let finalIndexPath = IndexPath(row: index, section: 0)
+                        let finalCell = collectionView.cellForItem(at: finalIndexPath) as? CKPhotoBaseCollectionViewCell
+                        return finalCell?.ivImage
+                    }
+                }
+                
+                present(galleryViewController, animated: true, completion: nil)
+            }
         }
     }
     

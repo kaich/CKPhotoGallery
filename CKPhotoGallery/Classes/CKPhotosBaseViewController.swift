@@ -8,7 +8,6 @@
 
 import UIKit
 import Kingfisher
-import MediaPlayer
 
 let HexColor = {(hex :Int, alpha :Float) in return UIColor.init(colorLiteralRed: ((Float)((hex & 0xFF0000) >> 16))/255.0, green: ((Float)((hex & 0xFF00) >> 8))/255.0, blue: ((Float)(hex & 0xFF))/255.0, alpha: alpha) }
 
@@ -30,6 +29,7 @@ public class CKPhotosBaseViewController: UICollectionViewController, UICollectio
     public var imageUrls = [URL]()
     public var sizeByURLBlock :((URL) -> CGSize)? = { _ in return CGSize.zero }
     public var typeByURLBlock :((URL) -> CKImageType) = { _ in return CKImageType.image}
+    public var videoURLByURLBlock :((URL) -> URL?) = { _ in return nil }
     //图片加载完成(isVertical ，finalSize)
     public var imageLoadCompleteBlock :((Bool, CGSize) -> Void)?
     public var estimatedHeight :CGFloat = 0
