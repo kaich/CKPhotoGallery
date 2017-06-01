@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import MediaPlayer
 
 let HexColor = {(hex :Int, alpha :Float) in return UIColor.init(colorLiteralRed: ((Float)((hex & 0xFF0000) >> 16))/255.0, green: ((Float)((hex & 0xFF00) >> 8))/255.0, blue: ((Float)(hex & 0xFF))/255.0, alpha: alpha) }
 
@@ -19,14 +20,20 @@ public extension UIImage {
     }
 }
 
+public enum CKImageType {
+    case video, image
+}
+
 
 public class CKPhotosBaseViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     var duration :TimeInterval = 0.5
     public var imageUrls = [URL]()
+    public var sizeByURLBlock :((URL) -> CGSize)? = { _ in return CGSize.zero }
+    public var typeByURLBlock :((URL) -> CKImageType) = { _ in return CKImageType.image}
     //图片加载完成(isVertical ，finalSize)
     public var imageLoadCompleteBlock :((Bool, CGSize) -> Void)?
     public var estimatedHeight :CGFloat = 0
-    public var horhorizonalPadding = 0
+    public var horhorizonalPadding :CGFloat = 0
     
     struct CKImageInformation {
         var url :URL?
@@ -58,53 +65,66 @@ public class CKPhotosBaseViewController: UICollectionViewController, UICollectio
         // Dispose of any resources that can be recreated.
     }
     
+    func calculateSize() {
+        var sampleSize = CGSize.zero
+        for  (_, inform) in self.imageInformationDic {
+            if inform.size.height > inform.size.width {
+                self.isVertical = true
+            }
+            sampleSize = inform.size
+        }
+        if self.isVertical {
+            let height = self.estimatedHeight - 16
+            let scale = sampleSize.width / sampleSize.height < 1 ? sampleSize.width / sampleSize.height : sampleSize.height / sampleSize.width
+            let width =  height * scale
+            self.finalSize = CGSize(width: width, height: height)
+        }
+        else {
+            let width = UIScreen.main.bounds.width - self.horhorizonalPadding * 2
+            let scale = sampleSize.height / sampleSize.width
+            let height = width * scale
+            self.finalSize = CGSize(width: width, height: height)
+        }
+        
+        if let imageLoadCompleteBlock = self.imageLoadCompleteBlock {
+            imageLoadCompleteBlock(self.isVertical,self.finalSize)
+        }
+        self.collectionView?.reloadData()
+    }
+    
     func preloadImages(urls :[URL]) {
         
         let count = urls.count
         var loadedCount :Int = 0
         for url in urls {
-            let resource = ImageResource(downloadURL: url)
-            KingfisherManager.shared.retrieveImage(with: resource, options: nil, progressBlock: nil, completionHandler: { (image, error, type, url) in
-                if let image = image, let url = url {
-                    let imageInfo = CKImageInformation(url: url, size: image.size, orientation: image.imageOrientation)
-                    let index = self.imageUrls.index(of: url)
-                    self.imageInformationDic[index!] = imageInfo
-                    loadedCount += 1
-                }
-                
-                if loadedCount == count {
-                    var sampleSize = CGSize.zero
-                    for  (_, inform) in self.imageInformationDic {
-                        if inform.size.height > inform.size.width {
-                            self.isVertical = true
-                        }
-                        sampleSize = inform.size
-                    }
-                    if self.isVertical {
-                        let height = self.estimatedHeight - 16
-                        let scale = sampleSize.width / sampleSize.height < 1 ? sampleSize.width / sampleSize.height : sampleSize.height / sampleSize.width
-                        let width =  height * scale
-                        self.finalSize = CGSize(width: width, height: height)
-                    }
-                    else {
-                        let width = UIScreen.main.bounds.width - horhorizonalPadding * 2
-                        let scale = sampleSize.height / sampleSize.width
-                        let height = width * scale
-                        self.finalSize = CGSize(width: width, height: height)
+            let backendSize = self.sizeByURLBlock!(url)
+            if  backendSize == CGSize.zero {
+                let resource = ImageResource(downloadURL: url)
+                KingfisherManager.shared.retrieveImage(with: resource, options: nil, progressBlock: nil, completionHandler: { (image, error, type, url) in
+                    if let image = image, let url = url {
+                        let imageInfo = CKImageInformation(url: url, size: image.size, orientation: image.imageOrientation)
+                        let index = self.imageUrls.index(of: url)
+                        self.imageInformationDic[index!] = imageInfo
+                        loadedCount += 1
                     }
                     
-                    if let imageLoadCompleteBlock = self.imageLoadCompleteBlock {
-                        imageLoadCompleteBlock(self.isVertical,self.finalSize)
+                    if loadedCount == count {
+                        self.calculateSize()
                     }
-                    self.collectionView?.reloadData()
-                }
-                else {
-                    self.retryTimes += 1
-                    if self.retryTimes <= 3 {
-                        self.preloadImages(urls: urls)
+                    else {
+                        self.retryTimes += 1
+                        if self.retryTimes <= 3 {
+                            self.preloadImages(urls: urls)
+                        }
                     }
-                }
-            })
+                })
+            }
+            else {
+                let imageInfo = CKImageInformation(url: url, size: backendSize, orientation: .up)
+                let index = self.imageUrls.index(of: url)
+                self.imageInformationDic[index!] = imageInfo
+                loadedCount += 1
+            }
         }
         
     }
@@ -119,7 +139,8 @@ public class CKPhotosBaseViewController: UICollectionViewController, UICollectio
     override public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier, for: indexPath)
         if let cell = cell as? CKPhotoBaseCollectionViewCell {
-            let resource = ImageResource(downloadURL: imageUrls[indexPath.row])
+            let url = imageUrls[indexPath.row]
+            let resource = ImageResource(downloadURL: url)
             cell.ivImage.kf.setImage(with: resource, placeholder: nil, options: nil, progressBlock: nil, completionHandler: { (image, error, type, url) in
                 if let image = image {
                     if self.isVertical {
@@ -131,6 +152,12 @@ public class CKPhotosBaseViewController: UICollectionViewController, UICollectio
                 }
             })
             
+            if self.typeByURLBlock(url) == .video {
+                
+            }
+            else {
+                
+            }
         }
         return cell
     }
@@ -147,6 +174,7 @@ public class CKPhotosBaseViewController: UICollectionViewController, UICollectio
 
 class CKPhotoBaseCollectionViewCell: UICollectionViewCell {
     var ivImage = UIImageView(image: UIImage.make(name: "nullData_icon_Img_80x80"))
+    var ivTypeImage = UIImageView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -162,6 +190,9 @@ class CKPhotoBaseCollectionViewCell: UICollectionViewCell {
         let vConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-[imageView]-|", options: .alignAllFirstBaseline, metrics: nil, views:["imageView" : ivImage] )
         let constraints = hConstraints + vConstraints
         contentView.addConstraints(constraints)
+        
+        ivTypeImage.backgroundColor = .clear
+        contentView.addSubview(ivImage)
     }
     
     required init?(coder aDecoder: NSCoder) {
