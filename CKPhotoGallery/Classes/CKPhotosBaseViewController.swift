@@ -19,16 +19,11 @@ public extension UIImage {
     }
 }
 
-public enum CKImageType {
-    case video, image
-}
-
 
 public class CKPhotosBaseViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     var duration :TimeInterval = 0.5
     public var imageUrls = [URL]()
     public var sizeByURLBlock :((URL) -> CGSize)? = { _ in return CGSize.zero }
-    public var typeByURLBlock :((URL) -> CKImageType) = { _ in return CKImageType.image}
     public var videoURLByURLBlock :((URL) -> URL?) = { _ in return nil }
     //图片加载完成(isVertical ，finalSize)
     public var imageLoadCompleteBlock :((Bool, CGSize) -> Void)?
@@ -156,7 +151,7 @@ public class CKPhotosBaseViewController: UICollectionViewController, UICollectio
                 }
             })
             
-            if self.typeByURLBlock(url) == .video {
+            if self.videoURLByURLBlock(url) != nil {
                 
             }
             else {
