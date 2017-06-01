@@ -50,7 +50,7 @@ public class CKPhotosController: CKPhotosBaseViewController, DZNEmptyDataSetDele
     public override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? CKPhotoBaseCollectionViewCell {
             let url = imageUrls[indexPath.row]
-            if self.typeByURLBlock(url) == .video {
+            if self.videoURLByURLBlock(url) != nil {
                 if let videoURL = self.videoURLByURLBlock(url) {
                     let player = AVPlayer(url: videoURL as URL)
                     let playerViewController = AVPlayerViewController()
@@ -64,7 +64,7 @@ public class CKPhotosController: CKPhotosBaseViewController, DZNEmptyDataSetDele
                 
                 let galleryViewController = CKPhotoGalleryViewController()
                 galleryViewController.urls =  imageUrls.filter({ (url) -> Bool in
-                    return self.typeByURLBlock(url) == .image
+                    return self.videoURLByURLBlock(url) != nil
                 })
                 galleryViewController.currentIndex =  indexPath.row
                 galleryViewController.duration = duration
