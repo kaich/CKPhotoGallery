@@ -124,6 +124,10 @@ public class CKPhotosBaseViewController: UICollectionViewController, UICollectio
                 let index = self.imageUrls.index(of: url)
                 self.imageInformationDic[index!] = imageInfo
                 loadedCount += 1
+                
+                if loadedCount == count {
+                    self.calculateSize()
+                }
             }
         }
         
