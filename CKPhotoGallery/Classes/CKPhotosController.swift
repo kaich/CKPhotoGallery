@@ -63,15 +63,18 @@ public class CKPhotosController: CKPhotosBaseViewController, DZNEmptyDataSetDele
             else {
                 
                 let galleryViewController = CKPhotoGalleryViewController()
-                galleryViewController.urls =  imageUrls.filter({ (url) -> Bool in
+                let urls = imageUrls.filter({ (url) -> Bool in
                     return self.videoURLByURLBlock(url) == nil
                 })
-                galleryViewController.currentIndex = galleryViewController.urls.index(of: url)!
+                galleryViewController.urls = urls
+                galleryViewController.currentIndex = urls.index(of: url)!
                 galleryViewController.duration = duration
                 if isZoomTranstion {
                     galleryViewController.referenceView = cell.ivImage
                     galleryViewController.dismissReferenceBlock = { (index) in
-                        let finalIndexPath = IndexPath(row: index, section: 0)
+                        let url = urls[index]
+                        let finalIndex = self.imageUrls.index(of: url)
+                        let finalIndexPath = IndexPath(row: finalIndex, section: 0)
                         let finalCell = collectionView.cellForItem(at: finalIndexPath) as? CKPhotoBaseCollectionViewCell
                         return finalCell?.ivImage
                     }

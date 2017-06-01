@@ -140,7 +140,7 @@ public class CKPhotosBaseViewController: UICollectionViewController, UICollectio
         if let cell = cell as? CKPhotoBaseCollectionViewCell {
             let url = imageUrls[indexPath.row]
             let resource = ImageResource(downloadURL: url)
-            cell.ivImage.kf.setImage(with: resource, placeholder: nil, options: nil, progressBlock: nil, completionHandler: { (image, error, type, url) in
+            cell.ivImage.kf.setImage(with: resource, placeholder: UIImage.make(name: "nullData_icon_Img_40x40"), options: nil, progressBlock: nil, completionHandler: { (image, error, type, url) in
                 if let image = image {
                     if self.isVertical {
                         if image.size.width > image.size.height {
