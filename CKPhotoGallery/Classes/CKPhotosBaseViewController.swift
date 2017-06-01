@@ -152,10 +152,10 @@ public class CKPhotosBaseViewController: UICollectionViewController, UICollectio
             })
             
             if self.videoURLByURLBlock(url) != nil {
-                
+                cell.ivTypeImage.image = UIImage.make(name: "video")
             }
             else {
-                
+                cell.ivTypeImage.image = nil
             }
         }
         return cell

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		022030D28AD796DE3F4D2B9AE14A4D7C /* AnimatedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0146E2CD25FF3248809A0814B428955 /* AnimatedImageView.swift */; };
+		042B0EE61EDFF8600086F254 /* video.png in Resources */ = {isa = PBXBuildFile; fileRef = 042B0EE51EDFF8600086F254 /* video.png */; };
 		065578A0B4DA0A27BC459B824A7ECF5E /* ImagePrefetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76732323C3D8E55F92EEBE1122AC79BA /* ImagePrefetcher.swift */; };
 		10A689577CB2001D8F8FE7F078650A48 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3297758B3B239A57D1FBBB0EF5AA4D88 /* Box.swift */; };
 		11C35DAC01847F3D18BA26BE25B726DE /* Pods-CKPhotoGallery_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 317BA87C223BFD386B3D095CDC51587E /* Pods-CKPhotoGallery_Example-dummy.m */; };
@@ -112,6 +113,7 @@
 		0167138BA9493BFEC5933DC3A5D3A45B /* Pods-CKPhotoGallery_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CKPhotoGallery_Example.release.xcconfig"; sourceTree = "<group>"; };
 		032A6E69E7AB8BD1550068BDCE15AA4D /* Image.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Image.swift; path = Sources/Image.swift; sourceTree = "<group>"; };
 		03CE91433919DE1D81942B3424AECC65 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		042B0EE51EDFF8600086F254 /* video.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = video.png; sourceTree = "<group>"; };
 		0BB8EBF88867B503D5AE1BF920C9B1C6 /* Pods-CKPhotoGallery_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CKPhotoGallery_Tests-dummy.m"; sourceTree = "<group>"; };
 		0BF2CD6D1A10442A7BB3EF77914071CB /* CKPhotoGalleryViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CKPhotoGalleryViewController.swift; sourceTree = "<group>"; };
 		0EA54EBC512F49DEBBBF8205949166D1 /* ImageView+Kingfisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ImageView+Kingfisher.swift"; path = "Sources/ImageView+Kingfisher.swift"; sourceTree = "<group>"; };
@@ -121,7 +123,7 @@
 		232BD857D82EC836540866C40E0C6BF8 /* ImageTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageTransition.swift; path = Sources/ImageTransition.swift; sourceTree = "<group>"; };
 		2647C65EFD1478D5792993ACB0524CEE /* ImageProcessor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageProcessor.swift; path = Sources/ImageProcessor.swift; sourceTree = "<group>"; };
 		2802EEB92D2DEBC2D3E5C953C0B076F1 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		28A293ABD801FE398EEB5FDE0AE7555C /* CKPhotoGallery.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = CKPhotoGallery.bundle; path = CKPhotoGallery.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		28A293ABD801FE398EEB5FDE0AE7555C /* CKPhotoGallery.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CKPhotoGallery.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		3065CD658BC3C61AF8629F138BF4071D /* Filter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Filter.swift; path = Sources/Filter.swift; sourceTree = "<group>"; };
 		317BA87C223BFD386B3D095CDC51587E /* Pods-CKPhotoGallery_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CKPhotoGallery_Example-dummy.m"; sourceTree = "<group>"; };
 		3297758B3B239A57D1FBBB0EF5AA4D88 /* Box.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Box.swift; path = Sources/Box.swift; sourceTree = "<group>"; };
@@ -129,20 +131,20 @@
 		3D5F4D8032CCBA3C8992961675BC5B3B /* Kingfisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Kingfisher.swift; path = Sources/Kingfisher.swift; sourceTree = "<group>"; };
 		3ECA6A5B9AF7AE5632712CC2EBE1EAF1 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
 		439280114AF17F7506EDC54FB9745156 /* ImageCache.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageCache.swift; path = Sources/ImageCache.swift; sourceTree = "<group>"; };
-		453FB0DBE4D0CD7AEA20CC2D84503DE1 /* Pods_CKPhotoGallery_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_CKPhotoGallery_Example.framework; path = "Pods-CKPhotoGallery_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		453FB0DBE4D0CD7AEA20CC2D84503DE1 /* Pods_CKPhotoGallery_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CKPhotoGallery_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		47F9F2152CB43287685280E054EDDDEF /* ImageDownloader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageDownloader.swift; path = Sources/ImageDownloader.swift; sourceTree = "<group>"; };
-		4826A71D6E7CA3F44CE75A7E2574ECEA /* Kingfisher.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Kingfisher.modulemap; sourceTree = "<group>"; };
+		4826A71D6E7CA3F44CE75A7E2574ECEA /* Kingfisher.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Kingfisher.modulemap; sourceTree = "<group>"; };
 		4A8368D684BC5BBBDEC6D5A56A02A5D4 /* Pods-CKPhotoGallery_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CKPhotoGallery_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		4B00C82845025042A6AFF20C6235F0F1 /* nullData_icon_Img_40x40@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; path = "nullData_icon_Img_40x40@3x.png"; sourceTree = "<group>"; };
+		4B00C82845025042A6AFF20C6235F0F1 /* nullData_icon_Img_40x40@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "nullData_icon_Img_40x40@3x.png"; sourceTree = "<group>"; };
 		4BEDD8F8C9BEA42690E042D1A88D02AF /* CKPhotoGallery-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CKPhotoGallery-prefix.pch"; sourceTree = "<group>"; };
 		4D7CA49213A31166A0BDAA9282DF81F7 /* Pods-CKPhotoGallery_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CKPhotoGallery_Tests-resources.sh"; sourceTree = "<group>"; };
 		53ED23748415ED93443F447B5E86D17B /* CKPhotoGallery-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CKPhotoGallery-umbrella.h"; sourceTree = "<group>"; };
 		557F18860014B64DB66DD6AC5D95E860 /* CKPhotoGalleryBaseTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CKPhotoGalleryBaseTransition.swift; sourceTree = "<group>"; };
 		58C0AA8BCB33C315DD9014286D2BAA69 /* Pods-CKPhotoGallery_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CKPhotoGallery_Example-umbrella.h"; sourceTree = "<group>"; };
-		59D4EDC8B003F8459FE822931A6CA2A0 /* CKPhotoGallery.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = CKPhotoGallery.modulemap; sourceTree = "<group>"; };
+		59D4EDC8B003F8459FE822931A6CA2A0 /* CKPhotoGallery.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = CKPhotoGallery.modulemap; sourceTree = "<group>"; };
 		61C579D8318ECC2A3C90944100A1D6F5 /* Pods-CKPhotoGallery_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CKPhotoGallery_Example-resources.sh"; sourceTree = "<group>"; };
 		61CFEADCAB91DB270C0FA2B6462803E3 /* Pods-CKPhotoGallery_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CKPhotoGallery_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		677F0B00CCA2319E572D1A815640D968 /* nullData_icon_Img_40x40@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; path = "nullData_icon_Img_40x40@2x.png"; sourceTree = "<group>"; };
+		677F0B00CCA2319E572D1A815640D968 /* nullData_icon_Img_40x40@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "nullData_icon_Img_40x40@2x.png"; sourceTree = "<group>"; };
 		6B041A4B2F4A662DD050EEA133672122 /* UIScrollView+EmptyDataSet.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+EmptyDataSet.h"; path = "Source/UIScrollView+EmptyDataSet.h"; sourceTree = "<group>"; };
 		6DAB9D6A23AD9D23E6B4AC02B3A11087 /* Pods-CKPhotoGallery_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CKPhotoGallery_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		71E64511DCF837207919A06729DE2B00 /* Pods-CKPhotoGallery_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CKPhotoGallery_Example-frameworks.sh"; sourceTree = "<group>"; };
@@ -151,13 +153,13 @@
 		79E137BCADC4661D4A0F7AE6FB449A42 /* UIScrollView+EmptyDataSet.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+EmptyDataSet.m"; path = "Source/UIScrollView+EmptyDataSet.m"; sourceTree = "<group>"; };
 		81DBC6541A0A132D7F3667CC5CE7C44C /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		82F50B7CC14391E93AEDB69FCCE13782 /* CKScalingImageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CKScalingImageView.swift; sourceTree = "<group>"; };
-		8939171D9B345FA79F3E2BEF8B3816FD /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Kingfisher.framework; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8939171D9B345FA79F3E2BEF8B3816FD /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BBFB810F879F8324931F5D85767BC26 /* Kingfisher.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Kingfisher.xcconfig; sourceTree = "<group>"; };
 		92AA2104B6A92785CAA17DA45D02954E /* KingfisherOptionsInfo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KingfisherOptionsInfo.swift; path = Sources/KingfisherOptionsInfo.swift; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9857F5B2853B5C6D522046B7DA2177C7 /* CacheSerializer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CacheSerializer.swift; path = Sources/CacheSerializer.swift; sourceTree = "<group>"; };
-		9C486E9099C8EDDED5DAEA796AE6DC73 /* CKPhotoGallery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = CKPhotoGallery.framework; path = CKPhotoGallery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9E658CC8F325616DA878A34221850A54 /* DZNEmptyDataSet.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = DZNEmptyDataSet.modulemap; sourceTree = "<group>"; };
+		9C486E9099C8EDDED5DAEA796AE6DC73 /* CKPhotoGallery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CKPhotoGallery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E658CC8F325616DA878A34221850A54 /* DZNEmptyDataSet.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = DZNEmptyDataSet.modulemap; sourceTree = "<group>"; };
 		A045BE2EB221F4281EE352A331BE7146 /* DZNEmptyDataSet-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DZNEmptyDataSet-prefix.pch"; sourceTree = "<group>"; };
 		A09F720D2A090B9C4CA25A8B1E315579 /* UIButton+Kingfisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIButton+Kingfisher.swift"; path = "Sources/UIButton+Kingfisher.swift"; sourceTree = "<group>"; };
 		A27B1EA0E173AE0BCDA42B57E6C76320 /* DZNEmptyDataSet.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = DZNEmptyDataSet.xcconfig; sourceTree = "<group>"; };
@@ -165,26 +167,26 @@
 		AC4F8DB2A8A4B8EBD4A484D211A212FF /* CKPhotosController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CKPhotosController.swift; sourceTree = "<group>"; };
 		AEFD92812ECE7BD6F40B94F2758B50CD /* String+MD5.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "String+MD5.swift"; path = "Sources/String+MD5.swift"; sourceTree = "<group>"; };
 		B37242536AA91F4BF797B0C4555D8556 /* Pods-CKPhotoGallery_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CKPhotoGallery_Tests-frameworks.sh"; sourceTree = "<group>"; };
-		B5B68ADA9FFA211109406D10CEE6C70A /* nullData_icon_Img_80x80@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; path = "nullData_icon_Img_80x80@3x.png"; sourceTree = "<group>"; };
+		B5B68ADA9FFA211109406D10CEE6C70A /* nullData_icon_Img_80x80@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "nullData_icon_Img_80x80@3x.png"; sourceTree = "<group>"; };
 		B621FF8AE028775CF98CDCA3B3F72B1A /* Kingfisher.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Kingfisher.h; path = Sources/Kingfisher.h; sourceTree = "<group>"; };
 		B6474AC39CB561E6ABE9FF4FD7D10530 /* Pods-CKPhotoGallery_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CKPhotoGallery_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		B71F594F8E3D8B83168447C5140C3762 /* KingfisherManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KingfisherManager.swift; path = Sources/KingfisherManager.swift; sourceTree = "<group>"; };
-		C598C258D4C16CE30F5752E7229B0AB4 /* Pods-CKPhotoGallery_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-CKPhotoGallery_Example.modulemap"; sourceTree = "<group>"; };
+		C598C258D4C16CE30F5752E7229B0AB4 /* Pods-CKPhotoGallery_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-CKPhotoGallery_Example.modulemap"; sourceTree = "<group>"; };
 		C77953A2F5434E324BEB466F1AC96219 /* CKPhotoGallery-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CKPhotoGallery-dummy.m"; sourceTree = "<group>"; };
 		C9D93CFEACB5EB343D51A09A7325A642 /* ResourceBundle-CKPhotoGallery-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-CKPhotoGallery-Info.plist"; sourceTree = "<group>"; };
 		CC6688469CD0C0F21F42B06300D25E72 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEDDA5A609DE04115B76A28769985D7B /* Kingfisher-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Kingfisher-umbrella.h"; sourceTree = "<group>"; };
 		D124BD11A4AF488CA2D43F7056483D4C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D265CA1312D44C814C231FE4778866B6 /* DZNEmptyDataSet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = DZNEmptyDataSet.framework; path = DZNEmptyDataSet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D2886DF85E875ACE9C9B6F3A70E7CC6A /* nullData_icon_Img_80x80@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; path = "nullData_icon_Img_80x80@2x.png"; sourceTree = "<group>"; };
+		D265CA1312D44C814C231FE4778866B6 /* DZNEmptyDataSet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DZNEmptyDataSet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2886DF85E875ACE9C9B6F3A70E7CC6A /* nullData_icon_Img_80x80@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "nullData_icon_Img_80x80@2x.png"; sourceTree = "<group>"; };
 		D61074F441B99438630C8CF17A95E456 /* ThreadHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThreadHelper.swift; path = Sources/ThreadHelper.swift; sourceTree = "<group>"; };
 		DE8F325F657E4BD78415CECEFDFA7688 /* Pods-CKPhotoGallery_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CKPhotoGallery_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		E0701CA8520954787472AC1600DCF7C8 /* DZNEmptyDataSet-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "DZNEmptyDataSet-dummy.m"; sourceTree = "<group>"; };
-		E4F0437D35E26A293008548F77975F0A /* Pods-CKPhotoGallery_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-CKPhotoGallery_Tests.modulemap"; sourceTree = "<group>"; };
+		E4F0437D35E26A293008548F77975F0A /* Pods-CKPhotoGallery_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-CKPhotoGallery_Tests.modulemap"; sourceTree = "<group>"; };
 		E88917DF3847A7449213555563402319 /* Pods-CKPhotoGallery_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CKPhotoGallery_Tests-umbrella.h"; sourceTree = "<group>"; };
 		EC9F44E3526A251F0A9C147F9FEDE091 /* CKPhotoGallery.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CKPhotoGallery.xcconfig; sourceTree = "<group>"; };
 		ECEC73570801B238D8186823E620873F /* DZNEmptyDataSet-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DZNEmptyDataSet-umbrella.h"; sourceTree = "<group>"; };
-		ED7AEB044636671E6E41856177C4AD56 /* Pods_CKPhotoGallery_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_CKPhotoGallery_Tests.framework; path = "Pods-CKPhotoGallery_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED7AEB044636671E6E41856177C4AD56 /* Pods_CKPhotoGallery_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CKPhotoGallery_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0146E2CD25FF3248809A0814B428955 /* AnimatedImageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnimatedImageView.swift; path = Sources/AnimatedImageView.swift; sourceTree = "<group>"; };
 		F042DA73BCAC6F48929F74BBF0211CB4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		F200B75C078297C010F0B44FB8A2919F /* Kingfisher-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Kingfisher-prefix.pch"; sourceTree = "<group>"; };
@@ -276,7 +278,6 @@
 			children = (
 				FDA3A72368D0F661EF1712037D070D0A /* Assets */,
 			);
-			name = CKPhotoGallery;
 			path = CKPhotoGallery;
 			sourceTree = "<group>";
 		};
@@ -348,7 +349,6 @@
 				A09F720D2A090B9C4CA25A8B1E315579 /* UIButton+Kingfisher.swift */,
 				83C59B6FC567206E6CA8E35FD4C7E6F7 /* Support Files */,
 			);
-			name = Kingfisher;
 			path = Kingfisher;
 			sourceTree = "<group>";
 		};
@@ -381,7 +381,6 @@
 				73051F3FB0401FD1C15C562B909684D4 /* CKPhotoViewController.swift */,
 				82F50B7CC14391E93AEDB69FCCE13782 /* CKScalingImageView.swift */,
 			);
-			name = Classes;
 			path = Classes;
 			sourceTree = "<group>";
 		};
@@ -457,7 +456,6 @@
 			children = (
 				7D7BCEF462947C88A3F5E25275EBC0A3 /* Classes */,
 			);
-			name = CKPhotoGallery;
 			path = CKPhotoGallery;
 			sourceTree = "<group>";
 		};
@@ -468,7 +466,6 @@
 				79E137BCADC4661D4A0F7AE6FB449A42 /* UIScrollView+EmptyDataSet.m */,
 				AA6C61B63CE4C5D2B470F9986502D6AE /* Support Files */,
 			);
-			name = DZNEmptyDataSet;
 			path = DZNEmptyDataSet;
 			sourceTree = "<group>";
 		};
@@ -497,12 +494,12 @@
 		FDA3A72368D0F661EF1712037D070D0A /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				042B0EE51EDFF8600086F254 /* video.png */,
 				677F0B00CCA2319E572D1A815640D968 /* nullData_icon_Img_40x40@2x.png */,
 				4B00C82845025042A6AFF20C6235F0F1 /* nullData_icon_Img_40x40@3x.png */,
 				D2886DF85E875ACE9C9B6F3A70E7CC6A /* nullData_icon_Img_80x80@2x.png */,
 				B5B68ADA9FFA211109406D10CEE6C70A /* nullData_icon_Img_80x80@3x.png */,
 			);
-			name = Assets;
 			path = Assets;
 			sourceTree = "<group>";
 		};
@@ -711,6 +708,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F70B9811D8357F3C2E860E239E775B7A /* CKPhotoGallery.bundle in Resources */,
+				042B0EE61EDFF8600086F254 /* video.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
