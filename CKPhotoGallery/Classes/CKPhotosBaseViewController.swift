@@ -60,7 +60,7 @@ public class CKPhotosBaseViewController: UICollectionViewController, UICollectio
         // Dispose of any resources that can be recreated.
     }
     
-    func calculateSize() {
+    func calculateSize(imageInformDic :[Int : CKImageInformation]) {
         var sampleSize = CGSize.zero
         for  (_, inform) in self.imageInformationDic {
             if inform.size.height > inform.size.width {
@@ -91,6 +91,7 @@ public class CKPhotosBaseViewController: UICollectionViewController, UICollectio
         
         let count = urls.count
         var loadedCount :Int = 0
+        var tmpImageInformationDic = [Int : CKImageInformation]()
         for url in urls {
             let backendSize = self.sizeByURLBlock!(url)
             if  backendSize == CGSize.zero {
@@ -99,12 +100,12 @@ public class CKPhotosBaseViewController: UICollectionViewController, UICollectio
                     if let image = image, let url = url {
                         let imageInfo = CKImageInformation(url: url, size: image.size, orientation: image.imageOrientation)
                         let index = self.imageUrls.index(of: url)
-                        self.imageInformationDic[index!] = imageInfo
+                        tmpImageInformationDic[index!] = imageInfo
                         loadedCount += 1
                     }
                     
                     if loadedCount == count {
-                        self.calculateSize()
+                        self.calculateSize(imageInformDic: tmpImageInformationDic)
                     }
                     else {
                         self.retryTimes += 1
@@ -117,11 +118,11 @@ public class CKPhotosBaseViewController: UICollectionViewController, UICollectio
             else {
                 let imageInfo = CKImageInformation(url: url, size: backendSize, orientation: .up)
                 let index = self.imageUrls.index(of: url)
-                self.imageInformationDic[index!] = imageInfo
+                tmpImageInformationDic[index!] = imageInfo
                 loadedCount += 1
                 
                 if loadedCount == count {
-                    self.calculateSize()
+                    self.calculateSize(imageInformDic: tmpImageInformationDic)
                 }
             }
         }
