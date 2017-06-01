@@ -61,6 +61,7 @@ public class CKPhotosBaseViewController: UICollectionViewController, UICollectio
     }
     
     func calculateSize(imageInformDic :[Int : CKImageInformation]) {
+        self.imageInformationDic = imageInformDic
         var sampleSize = CGSize.zero
         for  (_, inform) in self.imageInformationDic {
             if inform.size.height > inform.size.width {
