@@ -191,7 +191,7 @@ class CKPhotoBaseCollectionViewCell: UICollectionViewCell {
         contentView.addConstraints(constraints)
         
         ivTypeImage.backgroundColor = .clear
-        contentView.addSubview(ivImage)
+        contentView.addSubview(ivTypeImage)
         let widthConstraint = NSLayoutConstraint(item: ivTypeImage, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .width, multiplier: 1, constant: 48)
         let heightConstraint = NSLayoutConstraint(item: ivTypeImage, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: 48)
         let centerXConstraint = NSLayoutConstraint(item: ivTypeImage, attribute: .centerX, relatedBy: .equal, toItem: contentView, attribute: .centerX, multiplier: 1, constant: 0)
