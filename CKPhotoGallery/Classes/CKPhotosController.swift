@@ -74,7 +74,7 @@ public class CKPhotosController: CKPhotosBaseViewController, DZNEmptyDataSetDele
                     galleryViewController.dismissReferenceBlock = { (index) in
                         let url = urls[index]
                         let finalIndex = self.imageUrls.index(of: url)
-                        let finalIndexPath = IndexPath(row: finalIndex, section: 0)
+                        let finalIndexPath = IndexPath(row: finalIndex!, section: 0)
                         let finalCell = collectionView.cellForItem(at: finalIndexPath) as? CKPhotoBaseCollectionViewCell
                         return finalCell?.ivImage
                     }
