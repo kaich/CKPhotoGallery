@@ -43,7 +43,7 @@ class CKPhotoViewController: UIViewController, UIScrollViewDelegate {
     }()
     
     init(url :URL) {
-        self.url = URL(string: url)
+        self.url = url
         super.init(nibName: nil, bundle: nil)
     }
     
