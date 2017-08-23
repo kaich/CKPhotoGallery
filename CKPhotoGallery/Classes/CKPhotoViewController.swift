@@ -19,8 +19,31 @@ class CKPhotoViewController: UIViewController, UIScrollViewDelegate {
         return imageView
     }()
     
+    lazy var emptyImageView :UIImageView = {
+        let imageView = UIImageView(image: UIImage.make(name:"nullData_icon_Img_40x40"))
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(imageView)
+        self.view.addConstraint(
+            NSLayoutConstraint(item: self.view,
+                               attribute: .centerX,
+                               relatedBy: .equal,
+                               toItem: imageView,
+                               attribute: .centerX,
+                               multiplier: 1, constant: 0)
+        )
+        self.view.addConstraint(
+            NSLayoutConstraint(item: self.view,
+                               attribute: .centerY,
+                               relatedBy: .equal,
+                               toItem: imageView,
+                               attribute: .centerY,
+                               multiplier: 1, constant: 0)
+        )
+        return imageView
+    }()
+    
     init(url :URL) {
-        self.url = url
+        self.url = URL(string: url)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -36,7 +59,14 @@ class CKPhotoViewController: UIViewController, UIScrollViewDelegate {
         scalingImageView.backgroundColor = UIColor.clear
         scalingImageView.translatesAutoresizingMaskIntoConstraints = false
         let resource = ImageResource(downloadURL: url!)
-        scalingImageView.imageView.kf.setImage(with: resource, placeholder: UIImage.make(name:"nullData_icon_Img_40x40"), options: nil, progressBlock: nil, completionHandler: nil);
+        scalingImageView.imageView.kf.setImage(with: resource, placeholder: nil, options: nil, progressBlock: nil, completionHandler: { (image, error, type, url) in
+            if image == nil {
+                self.emptyImageView.isHidden = false
+            }
+            else {
+                self.emptyImageView.isHidden = true
+            }
+        });
         
     }
 

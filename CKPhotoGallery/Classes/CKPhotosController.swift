@@ -44,6 +44,9 @@ public class CKPhotosController: CKPhotosBaseViewController, DZNEmptyDataSetDele
         // Dispose of any resources that can be recreated.
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
     
     //MARK: - UICollectionViewController UICollectionViewDelegateFlowLayout Delegate Datasource
     
@@ -58,6 +61,10 @@ public class CKPhotosController: CKPhotosBaseViewController, DZNEmptyDataSetDele
                     self.present(playerViewController, animated: true) {
                         playerViewController.player!.play()
                     }
+                    
+                    NotificationCenter.default.addObserver(self, selector: #selector(playerDidFinishPlaying(note:)),
+                                                                     name: NSNotification.Name.AVPlayerItemDidPlayToEndTime,
+                                                                     object: playerViewController.player!.currentItem)
                 }
             }
             else {
@@ -83,6 +90,12 @@ public class CKPhotosController: CKPhotosBaseViewController, DZNEmptyDataSetDele
                 present(galleryViewController, animated: true, completion: nil)
             }
         }
+    }
+    
+    
+    func playerDidFinishPlaying(note:NSNotification){
+        print("video finished")
+        dismiss(animated: true, completion: nil)
     }
     
     //MARK: -  DZNEmptyDataSetDelegate , DZNEmptyDataSetSource
