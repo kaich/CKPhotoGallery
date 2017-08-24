@@ -175,14 +175,25 @@ public class CKPhotosBaseViewController: UICollectionViewController, UICollectio
                             cell.ivImage.image = rotatedImage
                         }
                     }
+                    cell.ivPlaceholder.isHidden = true
+                }
+                else {
+                    cell.ivPlaceholder.isHidden = false
                 }
             })
             
             if self.videoURLByURLBlock(url) != nil {
                 cell.ivTypeImage.image = UIImage.make(name: "video")
+                cell.ivPlaceholder.isHidden = true
             }
             else {
                 cell.ivTypeImage.image = nil
+                if cell.ivImage.image != nil {
+                    cell.ivPlaceholder.isHidden = true
+                }
+                else {
+                    cell.ivPlaceholder.isHidden = false
+                }
             }
         }
         return cell
@@ -199,7 +210,8 @@ public class CKPhotosBaseViewController: UICollectionViewController, UICollectio
 
 
 class CKPhotoBaseCollectionViewCell: UICollectionViewCell {
-    var ivImage = UIImageView(image: UIImage.make(name: "nullData_icon_Img_80x80"))
+    var ivPlaceholder = UIImageView(image: UIImage.make(name: "nullData_icon_Img_40x40"))
+    var ivImage = UIImageView()
     var ivTypeImage = UIImageView()
     
     override init(frame: CGRect) {
@@ -226,6 +238,17 @@ class CKPhotoBaseCollectionViewCell: UICollectionViewCell {
         let centerYConstraint = NSLayoutConstraint(item: ivTypeImage, attribute: .centerY, relatedBy: .equal, toItem: contentView, attribute: .centerY, multiplier: 1, constant: 0)
         ivTypeImage.addConstraints([widthConstraint,heightConstraint])
         contentView.addConstraints([centerXConstraint,centerYConstraint])
+        
+        
+        ivPlaceholder.backgroundColor = .clear
+        ivPlaceholder.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(ivPlaceholder)
+        let phWidthConstraint = NSLayoutConstraint(item: ivPlaceholder, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .width, multiplier: 1, constant: 40)
+        let phHeightConstraint = NSLayoutConstraint(item: ivPlaceholder, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: 40)
+        let phCenterXConstraint = NSLayoutConstraint(item: ivPlaceholder, attribute: .centerX, relatedBy: .equal, toItem: contentView, attribute: .centerX, multiplier: 1, constant: 0)
+        let phCenterYConstraint = NSLayoutConstraint(item: ivPlaceholder, attribute: .centerY, relatedBy: .equal, toItem: contentView, attribute: .centerY, multiplier: 1, constant: 0)
+        ivPlaceholder.addConstraints([phWidthConstraint,phHeightConstraint])
+        contentView.addConstraints([phCenterXConstraint,phCenterYConstraint])
         
     }
     

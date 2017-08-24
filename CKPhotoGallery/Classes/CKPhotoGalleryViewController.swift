@@ -134,8 +134,10 @@ class CKPhotoGalleryViewController: UIViewController, UIPageViewControllerDelega
         }
         
         if let beginingView = animatedTransition.beginingView as? UIImageView , let endingView = animatedTransition.endingView as? UIImageView {
-            if beginingView.image?.imageOrientation.rawValue != endingView.image?.imageOrientation.rawValue  {
-                animatedTransition.rotationRadians = CGFloat(Float.pi / 2 * 3)
+            if let beginingImage = beginingView.image , let endingImage = endingView.image {
+                if beginingImage.imageOrientation.rawValue != endingImage.imageOrientation.rawValue  {
+                    animatedTransition.rotationRadians = CGFloat(Float.pi / 2 * 3)
+                }
             }
         }
         return animatedTransition
@@ -156,8 +158,10 @@ class CKPhotoGalleryViewController: UIViewController, UIPageViewControllerDelega
         }
         
         if let beginingView = animatedTransition.beginingView as? UIImageView , let endingView = animatedTransition.endingView as? UIImageView {
-            if beginingView.image?.imageOrientation.rawValue != endingView.image?.imageOrientation.rawValue  {
-                animatedTransition.rotationRadians = CGFloat(Float.pi / 2)
+            if let beginingImage = beginingView.image , let endingImage = endingView.image {
+                if beginingImage.imageOrientation.rawValue != endingImage.imageOrientation.rawValue  {
+                    animatedTransition.rotationRadians = CGFloat(Float.pi / 2)
+                }
             }
         }
         return animatedTransition
