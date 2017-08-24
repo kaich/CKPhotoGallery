@@ -13,6 +13,7 @@ class CKPhotoGalleryZoomTransition: CKPhotoGalleryBaseTransition {
     var isDimissing :Bool = false
     var beginingView :UIView?
     var endingView :UIView?
+    var rotationRadians :CGFloat = 0
     var beginingAnimateView :UIView?
     var endingAnimateView :UIView?
     
@@ -81,8 +82,20 @@ class CKPhotoGalleryZoomTransition: CKPhotoGalleryBaseTransition {
         
         let beginCenter = beginingView.ck_translatedCenterPointToContainerView(containerView)
         let endCenter = endingView.ck_translatedCenterPointToContainerView(containerView)
-        let scale = endingView.frame.width / beginingView.frame.width
-        let finalTransform = beginingView.transform.scaledBy(x: scale, y: scale)
+        
+        let beginingSize = beginingView.frame.size
+        let endingSize = endingView.frame.size
+        
+        let scaleWidth = endingSize.width / beginingSize.width
+        let scaleHeight = endingSize.height / beginingSize.height
+        var scale = max(scaleWidth, scaleHeight)
+        
+        if Int(beginingView.frame.height / beginingView.frame.width) == Int(endingView.frame.width / endingView.frame.height) {
+            let scaleWidth = endingView.frame.width / beginingView.frame.height
+            let scaleHeight = endingView.frame.height / beginingView.frame.width
+            scale = max(scaleWidth, scaleHeight)
+        }
+        let finalTransform = beginingView.transform.scaledBy(x: scale, y: scale).rotated(by: rotationRadians)
         
         beginingAnimateView.center = beginCenter
         containerView.addSubview(beginingAnimateView)

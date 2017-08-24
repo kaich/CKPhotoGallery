@@ -10,7 +10,7 @@ import UIKit
 
 class CKPhotoGalleryViewController: UIViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource, UIViewControllerTransitioningDelegate {
     var urls = [URL]()
-    var referenceView :UIView?
+    var referenceView :UIImageView?
     var dismissReferenceBlock :((Int) -> UIImageView?)?
     var duration :TimeInterval?
     var currentIndex :Int = 0 {
@@ -132,6 +132,12 @@ class CKPhotoGalleryViewController: UIViewController, UIPageViewControllerDelega
         if let duration = duration {
             animatedTransition.animateDuration = duration
         }
+        
+        if let beginingView = animatedTransition.beginingView as? UIImageView , let endingView = animatedTransition.endingView as? UIImageView {
+            if beginingView.image?.imageOrientation.rawValue != endingView.image?.imageOrientation.rawValue  {
+                animatedTransition.rotationRadians = CGFloat(Float.pi / 2 * 3)
+            }
+        }
         return animatedTransition
     }
     
@@ -147,6 +153,12 @@ class CKPhotoGalleryViewController: UIViewController, UIPageViewControllerDelega
         animatedTransition.isDimissing = true
         if let duration = duration {
             animatedTransition.animateDuration = duration
+        }
+        
+        if let beginingView = animatedTransition.beginingView as? UIImageView , let endingView = animatedTransition.endingView as? UIImageView {
+            if beginingView.image?.imageOrientation.rawValue != endingView.image?.imageOrientation.rawValue  {
+                animatedTransition.rotationRadians = CGFloat(Float.pi / 2)
+            }
         }
         return animatedTransition
     }

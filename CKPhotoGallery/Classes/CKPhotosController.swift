@@ -22,8 +22,8 @@ public class CKPhotosController: CKPhotosBaseViewController, DZNEmptyDataSetDele
     public class func createPhotosController(target :UIViewController) -> CKPhotosController {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
-        flowLayout.minimumInteritemSpacing = 0;
-        flowLayout.minimumLineSpacing = 0;
+        flowLayout.minimumInteritemSpacing = 8;
+        flowLayout.minimumLineSpacing = 8;
         let vc = CKPhotosController(collectionViewLayout: flowLayout)
         target.addChildViewController(vc)
         return vc

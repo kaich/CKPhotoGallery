@@ -63,12 +63,37 @@ public class CKPhotosBaseViewController: UICollectionViewController, UICollectio
     func calculateSize(imageInformDic :[Int : CKImageInformation]) {
         self.imageInformationDic = imageInformDic
         var sampleSize = CGSize.zero
+        var sampleDic: [CGFloat : (Int, CGSize)] = [:]
         for  (_, inform) in self.imageInformationDic {
             if inform.size.height > inform.size.width {
                 self.isVertical = true
             }
             sampleSize = inform.size
+            let scale = sampleSize.width / sampleSize.height < 1 ? sampleSize.width / sampleSize.height : sampleSize.height / sampleSize.width
+            if let (times, size) = sampleDic[scale] {
+                sampleDic[scale] = (times + 1, size)
+            }
+            else {
+                sampleDic[scale] = (1, inform.size)
+            }
         }
+        
+        var maxValue: (Int, CGSize)? = nil
+        for (_ , (times , size)) in sampleDic {
+            if let (maxTimes , _) = maxValue {
+                if times > maxTimes {
+                    maxValue = (times,size)
+                }
+            }
+            else {
+                maxValue = (times, size)
+            }
+            
+        }
+        if let maxValue = maxValue {
+            (_ ,sampleSize) = maxValue
+        }
+        
         if self.isVertical {
             let height = self.estimatedHeight - 16
             let scale = sampleSize.width / sampleSize.height < 1 ? sampleSize.width / sampleSize.height : sampleSize.height / sampleSize.width
@@ -187,8 +212,8 @@ class CKPhotoBaseCollectionViewCell: UICollectionViewCell {
         ivImage.layer.borderWidth = 1 / UIScreen.main.scale
         ivImage.layer.cornerRadius = 3
         ivImage.layer.masksToBounds = true
-        let hConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-[imageView]-|", options: .alignAllFirstBaseline, metrics: nil, views:["imageView" : ivImage] )
-        let vConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-[imageView]-|", options: .alignAllFirstBaseline, metrics: nil, views:["imageView" : ivImage] )
+        let hConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-(0)-[imageView]-(0)-|", options: .alignAllFirstBaseline, metrics: nil, views:["imageView" : ivImage] )
+        let vConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-(0)-[imageView]-(0)-|", options: .alignAllFirstBaseline, metrics: nil, views:["imageView" : ivImage] )
         let constraints = hConstraints + vConstraints
         contentView.addConstraints(constraints)
         

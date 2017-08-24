@@ -21,7 +21,7 @@ class ViewController: UIViewController {
         })
         photsController.view.frame = CGRect(x: 0, y: 100, width: view.frame.width, height: 300)
         photsController.estimatedHeight = 300
-        photsController.isZoomTranstion = false
+//        photsController.isZoomTranstion = false
         view.addSubview(photsController.view)
     }
 
