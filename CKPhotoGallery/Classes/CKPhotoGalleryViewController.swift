@@ -24,7 +24,7 @@ class CKPhotoGalleryViewController: UIViewController, UIPageViewControllerDelega
     }
     fileprivate lazy var pageViewController :UIPageViewController = {
         let tmpPageController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: [UIPageViewControllerOptionInterPageSpacingKey: 16.0])
-        tmpPageController.view.backgroundColor = UIColor(colorLiteralRed: 0, green: 0, blue: 0, alpha: 0.8)
+        tmpPageController.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.8)
         tmpPageController.delegate = self
         tmpPageController.dataSource = self
         tmpPageController.setViewControllers([self.createPhotoViewControllerForPhoto(self.urls[self.currentIndex])], direction: .forward, animated: true, completion: nil)
@@ -53,7 +53,7 @@ class CKPhotoGalleryViewController: UIViewController, UIPageViewControllerDelega
         
         pageControl.numberOfPages = self.urls.count
         pageControl.currentPage = currentIndex
-        pageControl.pageIndicatorTintColor = UIColor(colorLiteralRed: 0, green: 0, blue: 0, alpha: 0.6)
+        pageControl.pageIndicatorTintColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
         pageControl.isUserInteractionEnabled = false
         self.view.addSubview(pageControl)
         
@@ -82,7 +82,7 @@ class CKPhotoGalleryViewController: UIViewController, UIPageViewControllerDelega
     }
     
     //MARK: - Gesture
-    func tapView(gesture :UITapGestureRecognizer) {
+    @objc func tapView(gesture :UITapGestureRecognizer) {
         dismiss(animated: true, completion: nil)
     }
     

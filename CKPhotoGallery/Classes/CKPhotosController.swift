@@ -93,7 +93,7 @@ public class CKPhotosController: CKPhotosBaseViewController, DZNEmptyDataSetDele
     }
     
     
-    func playerDidFinishPlaying(note:NSNotification){
+    @objc func playerDidFinishPlaying(note:NSNotification){
         print("video finished")
         dismiss(animated: true, completion: nil)
     }
