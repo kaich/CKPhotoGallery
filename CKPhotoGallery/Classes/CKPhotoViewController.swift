@@ -55,6 +55,7 @@ class CKPhotoViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        emptyImageView.isHidden = false
         view.backgroundColor = UIColor.clear
         scalingImageView.backgroundColor = UIColor.clear
         scalingImageView.translatesAutoresizingMaskIntoConstraints = false
